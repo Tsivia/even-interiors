@@ -368,6 +368,7 @@ body::after{content:"";position:fixed;inset:-50%;z-index:90;pointer-events:none;
 .footer__row{padding-block:var(--sy) 64px;font-size:15.5px}
 .footer__row div{grid-column:span 3;display:grid;gap:8px;align-content:start}
 .footer__row a{color:var(--on-dark);transition:opacity .3s}
+.footer__row div>*{justify-self:start}
 .footer__row a:hover{opacity:.6}
 .footer__word{position:relative;font:700 clamp(140px,31vw,560px)/.74 var(--display);letter-spacing:.12em;margin-left:.12em;text-align:center;user-select:none;pointer-events:none;
   background:url("img/living-full.webp") 50% 50%/cover;-webkit-background-clip:text;background-clip:text;color:transparent;translate:0 .1em;will-change:background-position}
@@ -403,7 +404,27 @@ body::after{content:"";position:fixed;inset:-50%;z-index:90;pointer-events:none;
   .about__quote{display:none}
   .pslide__txt{width:min(40vw,380px)}
 }
+/* תפריט מובייל */
+.nav__menu,.mmenu{display:none}
 @media (max-width:760px){
+  .nav{grid-template-columns:1fr auto auto;column-gap:8px}
+  .nav__menu{display:inline-flex;align-items:center;justify-content:center;height:40px;min-width:76px;padding:0 16px;border-radius:999px;border:1px solid currentColor;background:none;color:inherit;font:var(--w-body) 13px/1 var(--body);cursor:pointer;transition:background-color .4s,color .4s}
+  .mmenu{display:grid;position:fixed;inset:0;z-index:49;background:var(--espresso);padding:128px var(--m) 40px;align-content:space-between;visibility:hidden;clip-path:inset(0 0 100% 0);transition:clip-path .8s var(--ease-io),visibility 0s .8s}
+  .menu-open .mmenu{visibility:visible;clip-path:inset(0);transition:clip-path .8s var(--ease-io)}
+  .menu-open .nav,.menu-open .nav.ink{color:var(--on-dark)}
+  .menu-open .nav.hide{transform:none}
+  .mmenu nav{display:grid;gap:4px}
+  .mmenu nav a{display:flex;align-items:baseline;gap:20px;padding-block:6px;font:var(--w-body) 34px/1.25 var(--body);color:var(--on-dark);opacity:0;transform:translateY(24px);transition:opacity .4s,transform .4s}
+  .mmenu nav a b{min-width:32px;font:400 16px/1 var(--display);color:var(--amber-l)}
+  .menu-open .mmenu nav a{opacity:1;transform:none;transition:opacity .7s var(--ease),transform .9s var(--ease)}
+  .menu-open .mmenu nav a:nth-child(1){transition-delay:.25s}
+  .menu-open .mmenu nav a:nth-child(2){transition-delay:.31s}
+  .menu-open .mmenu nav a:nth-child(3){transition-delay:.37s}
+  .menu-open .mmenu nav a:nth-child(4){transition-delay:.43s}
+  .menu-open .mmenu nav a:nth-child(5){transition-delay:.49s}
+  .mmenu__foot{display:grid;gap:8px;justify-items:start;font-size:15px;color:var(--on-dark-2);opacity:0;transition:opacity .4s}
+  .mmenu__foot .label{color:var(--on-dark-3);margin-bottom:8px}
+  .menu-open .mmenu__foot{opacity:1;transition:opacity .8s .55s}
   :root{--t-body:16.5px;--gap:16px}
   .nav{height:72px}
   .mark span{display:none}
@@ -413,13 +434,19 @@ body::after{content:"";position:fixed;inset:-50%;z-index:90;pointer-events:none;
   .rail{display:none}
   .finale{gap:32px}
   .finale .display{font-size:clamp(44px,13.6vw,80px)}
-  .statement{font-size:clamp(30px,8.4vw,44px);width:auto;padding-inline:var(--m)}
-  .statement>span{white-space:normal}
+  /* משפט הפתיחה: כל שורה שלמה, בלי מילה יתומה */
+  .statement{font-size:7.6vw;line-height:1.08}
   .statement>span:nth-child(n){padding-left:0}
-  .stats{grid-template-columns:repeat(3,1fr)}
-  .stat__n{font-size:56px}
-  .stat p{font-size:13.5px}
-  .stat{padding-inline-start:0}
+  /* וילה אוליה: הכותרת ומתחתיה הפרטים, בלי שבירה */
+  .expand__cap{flex-direction:column;align-items:flex-start;gap:10px;bottom:32px}
+  .expand__cap .label{white-space:nowrap;letter-spacing:.16em}
+  .expand__cap .h2{white-space:nowrap;font-size:44px}
+  /* מספרים: שורה לכל מספר, המספר מימין והטקסט לצדו */
+  .stats{grid-template-columns:1fr;row-gap:36px;margin-top:56px}
+  .stat{padding-inline-start:0;grid-template-columns:128px 1fr;grid-template-areas:"n l" "n p";column-gap:20px;row-gap:6px;align-items:end}
+  .stat .label{grid-area:l;align-self:end}
+  .stat__n{grid-area:n;font-size:68px;align-self:center}
+  .stat p{grid-area:p;font-size:15px;max-width:24ch;margin-top:0;align-self:start}
   .studio__text{padding-inline-end:0}
   .about{height:auto;padding-top:var(--sy);display:grid}
   .about__top{position:static;padding-inline:var(--m);margin-bottom:48px}
@@ -437,11 +464,11 @@ body::after{content:"";position:fixed;inset:-50%;z-index:90;pointer-events:none;
   .work__intro .label{display:none}
   .gallery{row-gap:72px}
   .proj{grid-column:1/-1!important;margin-top:0!important}
-  .p4,.p5{grid-column:span 6!important}
+  .p4,.p5{grid-column:1/-1!important}
   .band__row{font-size:56px}
   .process__pin{height:auto!important}
   .process__stage{position:relative;height:auto;padding-block:var(--sy)}
-  .process__top{position:static;margin-bottom:48px}
+  .process__top{position:static;margin:0 var(--m) 48px}
   .pdots{display:none}
   .ptrack{flex-direction:column;transform:none!important;height:auto;gap:96px}
   .pslide{flex:none;height:auto;display:grid;gap:24px;padding-inline:var(--m)}
@@ -456,7 +483,7 @@ body::after{content:"";position:fixed;inset:-50%;z-index:90;pointer-events:none;
   .form{grid-template-columns:1fr;row-gap:16px}
   .form .btn{justify-content:space-between;margin-top:8px}
   .footer__row{row-gap:32px}
-  .footer__row div{grid-column:span 6}
+  .footer__row div{grid-column:1/-1}
   .footer__legal{grid-template-columns:1fr;justify-items:start;gap:16px}
   .footer__legal>span:last-child{justify-self:start}
 }
@@ -500,7 +527,18 @@ body::after{content:"";position:fixed;inset:-50%;z-index:90;pointer-events:none;
     <a href="#process" data-roll>תהליך</a>
   </nav>
   <a class="nav__cta" href="#contact"><span>פגישת היכרות</span></a>
+  <button class="nav__menu" type="button" aria-expanded="false" aria-controls="mmenu"><span>תפריט</span></button>
 </header>
+<div class="mmenu" id="mmenu" aria-hidden="true">
+  <nav aria-label="ניווט במובייל">
+    <a href="#studio"><b class="en">I</b>הסטודיו</a>
+    <a href="#about"><b class="en">II</b>נועה אבן</a>
+    <a href="#work"><b class="en">III</b>פרויקטים</a>
+    <a href="#process"><b class="en">IV</b>תהליך</a>
+    <a href="#contact"><b class="en">V</b>צרו קשר</a>
+  </nav>
+  <div class="mmenu__foot"><span class="label">סטודיו EVEN · תל אביב</span><a class="en" href="tel:+972500000000">050-000-0000</a><a class="en" href="mailto:studio@even.example">studio@even.example</a></div>
+</div>
 
 <main>
 <!-- ================= HERO ================= -->
@@ -846,6 +884,23 @@ body::after{content:"";position:fixed;inset:-50%;z-index:90;pointer-events:none;
       const el = $(id); if (!el) return; e.preventDefault(); lenis.scrollTo(el, { duration: 1.6 });
     }));
   }
+
+  /* ---------- תפריט מובייל ---------- */
+  const mbtn = $('.nav__menu'), mm = $('#mmenu');
+  const setMenu = open => {
+    document.body.classList.toggle('menu-open', open);
+    mbtn.setAttribute('aria-expanded', open);
+    mbtn.firstElementChild.textContent = open ? 'סגירה' : 'תפריט';
+    mm.setAttribute('aria-hidden', !open);
+    if (lenis) open ? lenis.stop() : lenis.start();
+  };
+  mbtn.addEventListener('click', () => setMenu(!document.body.classList.contains('menu-open')));
+  $$('#mmenu a[href^="#"]').forEach(a => a.addEventListener('click', e => {
+    const el = $(a.getAttribute('href')); e.preventDefault(); e.stopImmediatePropagation(); setMenu(false);
+    if (!el) return; if (lenis) lenis.scrollTo(el, { duration: 1.4, force: true }); else el.scrollIntoView();
+  }, true));
+  addEventListener('keydown', e => { if (e.key === 'Escape' && document.body.classList.contains('menu-open')) { setMenu(false); mbtn.focus(); } });
+  addEventListener('resize', () => { if (innerWidth > 760) setMenu(false); });
 
   const intro = $('#intro'), rooms = $$('.room'), rail = $('#rail'), railLis = $$('#rail li'), railFill = $('#rail-fill');
   const finale = $('#finale'), dim = $('#dim'), low = $('#low'), nav = $('#nav');
