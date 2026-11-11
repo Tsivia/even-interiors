@@ -490,11 +490,7 @@ body::after{content:"";position:fixed;inset:-50%;z-index:90;pointer-events:none;
 @media (min-width:761px){.about__stage{display:contents}}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition-duration:.01ms!important}
-  .film{height:auto}
-  .film__stage{position:relative;height:100svh}
-  .film__canvas,.room,.rail,.intro{display:none}
-  .finale{opacity:1;pointer-events:auto}
-  .film__dim{opacity:1}
+  /* הסרט בהירו נשאר: הוא זז רק כשהגולש גולל, ונעצר כשהוא עוצר */
   .split .ch,.lines .ln>span,.fade{opacity:1;translate:none;filter:none}
   .statement .w,.scrub .sw{opacity:1;transform:none}
   .pill{width:1.6em}
@@ -852,7 +848,7 @@ body::after{content:"";position:fixed;inset:-50%;z-index:90;pointer-events:none;
   const NEED = Math.min(N, 40);
   let opened = false;
   const open = () => { if (opened) return; opened = true; loader.classList.add('done'); };
-  if (N && !reduce) {
+  if (N) {
     size();
     const order = [], seen = new Set();
     for (let step = 16; step >= 1; step /= 2) for (let i = 0; i < N; i += step) if (!seen.has(i)) { seen.add(i); order.push(i); }
@@ -953,7 +949,7 @@ body::after{content:"";position:fixed;inset:-50%;z-index:90;pointer-events:none;
     const r = film.getBoundingClientRect();
     const p = clamp(-r.top / (r.height - H));
     const fp = clamp((p - HOLD_IN) / (1 - HOLD_IN - HOLD_OUT));
-    if (N && !reduce) {
+    if (N) {
       target = fp * (N - 1);
       const f = target;
       const i0 = clamp(1 - p / HOLD_IN);
@@ -1079,7 +1075,7 @@ body::after{content:"";position:fixed;inset:-50%;z-index:90;pointer-events:none;
 
   function loop(t) {
     if (lenis) lenis.raf(t);
-    if (N && !reduce) {
+    if (N) {
       cur += (target - cur) * .14;
       if (Math.abs(target - cur) < .02) cur = target;
       const i = Math.round(cur);
