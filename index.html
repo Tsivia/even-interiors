@@ -1,0 +1,1088 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>EVEN · נועה אבן, אדריכלות ועיצוב פנים</title>
+<meta name="description" content="סטודיו EVEN לאדריכלות ועיצוב פנים: בתים פרטיים שקטים, מדויקים וחמים, מהסקיצה הראשונה ועד הכרית האחרונה.">
+<link rel="preload" href="fonts/Melodrama-Light.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="frames/f0000.webp" as="image">
+<style>
+@font-face{font-family:"Melodrama";src:url("fonts/Melodrama-Light.woff2") format("woff2");font-weight:300;font-display:swap}
+@font-face{font-family:"Melodrama";src:url("fonts/Melodrama-Regular.woff2") format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Melodrama";src:url("fonts/Melodrama-Bold.woff2") format("woff2");font-weight:700;font-display:swap}
+@font-face{font-family:"Talent FS";src:url("fonts/TalentFS-VF.ttf") format("truetype");font-weight:100 800;font-display:swap}
+
+/* =========================================================
+   מערכת: צבע, 5 גדלים, שוליים וריווח אחידים
+   ========================================================= */
+:root{
+  --bone:#EFE9E0;
+  --linen:#E5DBCD;
+  --sand:#D6C7B3;
+  --taupe:#5E5046;
+  --ink:#211B17;
+  --ink-2:#332A24;
+  --espresso:#1A1512;
+  --espresso-2:#211A15;
+  --amber:#C88F5A;
+  --amber-l:#D9A877;
+  --on-dark:#F1EBE2;
+  --on-dark-2:rgba(241,235,226,.84);
+  --on-dark-3:rgba(241,235,226,.62);
+  --guide:rgba(33,27,23,.1);
+  --guide-dark:rgba(241,235,226,.075);
+
+  --display:"Melodrama","Cormorant Garamond",Georgia,serif;
+  --body:"Talent FS","Assistant",system-ui,sans-serif;
+
+  --t-display:clamp(64px,11.4vw,184px);
+  --t-h2:clamp(48px,6.6vw,104px);
+  --t-h3:clamp(28px,2.6vw,40px);
+  --t-body:17.5px;
+  --t-label:11.5px;
+  --w-body:300;          /* משקל טאלנט אחיד בכל האתר: Light, בין Thin ל-Regular */
+
+  --m:max(clamp(20px,4.45vw,64px),calc((100vw - 1720px)/2));
+  --sy:clamp(96px,11.1vw,160px);
+  --gap:24px;
+  --ease:cubic-bezier(.22,1,.36,1);
+  --ease-io:cubic-bezier(.76,0,.24,1);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+body{margin:0;background:var(--bone);color:var(--ink-2);font:var(--w-body) var(--t-body)/1.75 var(--body);-webkit-font-smoothing:antialiased;overflow-x:clip}
+img,svg,canvas{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,p,figure,blockquote,dl,dd{margin:0}
+::selection{background:var(--ink);color:var(--bone)}
+:focus-visible{outline:1px solid currentColor;outline-offset:6px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+.en{direction:ltr;unicode-bidi:isolate}
+.display{font:300 var(--t-display)/.86 var(--display);letter-spacing:-.025em;color:var(--ink)}
+.h2{font:300 var(--t-h2)/.9 var(--display);letter-spacing:-.02em;color:var(--ink)}
+.h3{font:300 var(--t-h3)/1.05 var(--display);letter-spacing:-.01em;color:var(--ink)}
+.h2.en,.h3.en{text-align:right}
+.label{font:var(--w-body) var(--t-label)/1.4 var(--body);letter-spacing:.22em;text-transform:uppercase;color:var(--taupe)}
+.label:not(.en){font-size:14px;letter-spacing:.02em;font-weight:var(--w-body)}
+p{max-width:46ch}
+.dark{color:var(--on-dark-2)}
+.dark .h2,.dark .h3,.dark .display{color:var(--on-dark)}
+.dark .label{color:var(--on-dark-3)}
+
+.wrap{padding-inline:var(--m)}
+.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gap)}
+
+/* קווי גריד אנכיים, שדוהים בקצוות במקום להיחתך */
+.guides{position:relative;isolation:isolate}
+.guides::before{content:"";position:absolute;inset:0 var(--m);z-index:-1;pointer-events:none;
+  background:repeating-linear-gradient(90deg,var(--guide) 0 1px,transparent 1px 25%);border-left:1px solid var(--guide);
+  -webkit-mask-image:linear-gradient(to bottom,transparent,#000 14%,#000 86%,transparent);mask-image:linear-gradient(to bottom,transparent,#000 14%,#000 86%,transparent)}
+.dark .guides::before,.dark.guides::before{background:repeating-linear-gradient(90deg,var(--guide-dark) 0 1px,transparent 1px 25%);border-left-color:var(--guide-dark)}
+
+/* טקסטורת טיח ואור חלון שזז: עומק לאזורים הבהירים */
+.plaster{position:relative;isolation:isolate}
+.plaster>.tex{position:absolute;inset:0;z-index:-2;pointer-events:none;background:url("img/tex-plaster.webp") 0 0/720px;mix-blend-mode:multiply;opacity:.55}
+.plaster>.gobo{position:absolute;inset:-20% -10%;z-index:-1;pointer-events:none;opacity:.5;
+  background:repeating-linear-gradient(115deg,rgba(255,244,226,0) 0 9%,rgba(255,244,226,.55) 11% 17%,rgba(255,244,226,0) 19% 30%);
+  filter:blur(28px);mix-blend-mode:soft-light;animation:gobo 26s ease-in-out infinite alternate}
+.plaster>.shade{position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(70% 60% at 85% 0%,rgba(255,250,240,.55),transparent 60%),radial-gradient(60% 50% at 0% 100%,rgba(150,120,90,.12),transparent 70%)}
+@keyframes gobo{from{transform:translate3d(-4%,0,0)}to{transform:translate3d(6%,-3%,0)}}
+
+body::after{content:"";position:fixed;inset:-50%;z-index:90;pointer-events:none;opacity:.05;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  animation:grain 1.4s steps(6) infinite}
+@keyframes grain{0%,100%{transform:translate(0,0)}20%{transform:translate(-3%,2%)}40%{transform:translate(2%,-3%)}60%{transform:translate(-2%,-1%)}80%{transform:translate(3%,3%)}}
+
+/* =========================================================
+   כפתור החתימה: מתמלא בצבע, בלי תנועה
+   ========================================================= */
+.btn{--bg:var(--ink);--fg:var(--bone);display:inline-flex;align-items:center;gap:16px;height:58px;padding:7px 30px 7px 7px;background:var(--bg);color:var(--fg);border:1px solid var(--bg);border-radius:999px;font:var(--w-body) 15px/1 var(--body);white-space:nowrap;cursor:pointer;transition:background-color .5s var(--ease),border-color .5s var(--ease),color .5s var(--ease)}
+.btn:hover{background:var(--fg);border-color:var(--fg);color:var(--bg)}
+.btn i{order:2;display:grid;place-items:center;flex:none;width:44px;height:44px;border-radius:50%;background:var(--fg);color:var(--bg);transition:background-color .5s var(--ease),color .5s var(--ease)}
+.btn:hover i{background:var(--bg);color:var(--fg)}
+.btn--light{--bg:var(--bone);--fg:var(--ink)}
+.btn--ghost{--bg:transparent;--fg:var(--ink);border-color:rgba(33,27,23,.35);color:var(--ink)}
+.btn--ghost:hover{background:var(--ink);border-color:var(--ink);color:var(--bone)}
+.btn--ghost i{background:var(--ink);color:var(--bone)}
+.btn--ghost:hover i{background:var(--bone);color:var(--ink)}
+.btn--ghost-l{--bg:transparent;--fg:var(--on-dark);border-color:rgba(241,235,226,.4);color:var(--on-dark)}
+.btn--ghost-l:hover{background:var(--on-dark);border-color:var(--on-dark);color:var(--ink)}
+.btn--ghost-l i{background:var(--on-dark);color:var(--ink)}
+.btn--ghost-l:hover i{background:var(--ink);color:var(--on-dark)}
+
+/* סמן מותאם */
+.cursor{position:fixed;left:0;top:0;z-index:95;opacity:0;pointer-events:none;width:12px;height:12px;margin:-6px 0 0 -6px;border-radius:50%;background:var(--amber);transition:width .5s var(--ease),height .5s var(--ease),margin .5s var(--ease),background .4s,opacity .4s;display:grid;place-items:center;font:var(--w-body) 11px/1 var(--body);letter-spacing:.2em;color:transparent;text-transform:uppercase}
+.cursor.live{opacity:1}
+.cursor.big{width:96px;height:96px;margin:-48px 0 0 -48px;background:rgba(241,235,226,.94);color:var(--ink)}
+@media (hover:none),(max-width:1100px){.cursor{display:none}}
+
+/* =========================================================
+   פרילודר וניווט
+   ========================================================= */
+.loader{position:fixed;inset:0;z-index:100;background:var(--espresso);color:var(--on-dark);display:grid;place-items:center;transition:opacity 1.2s var(--ease),visibility 1.2s}
+.loader.done{opacity:0;visibility:hidden}
+.loader__in{display:grid;justify-items:center;gap:20px}
+.loader__mark{font:300 48px/1 var(--display);letter-spacing:.42em;margin-left:-.42em}
+.loader__pct{font:var(--w-body) 12px/1 var(--body);letter-spacing:.3em;color:var(--on-dark-3)}
+
+.nav{position:fixed;inset:0 0 auto;z-index:50;height:96px;padding-inline:var(--m);display:grid;grid-template-columns:1fr auto 1fr;align-items:center;color:var(--on-dark);transition:color .6s var(--ease),transform .7s var(--ease)}
+.nav.hide{transform:translateY(-100%)}
+.nav.ink{color:var(--ink)}
+.mark{justify-self:start;display:flex;align-items:baseline;gap:14px}
+.mark b{font:300 26px/1 var(--display);letter-spacing:.42em}
+.mark span{font:var(--w-body) 10px/1 var(--body);letter-spacing:.24em;opacity:.8}
+.nav__links{display:flex;gap:40px;font-size:15px;font-weight:var(--w-body)}
+.nav__links a{position:relative;padding-block:8px}
+.nav__links a .roll>span{transition:transform .6s var(--ease)}
+.nav__links a:hover .roll>span{transform:translateY(-1.25em)}
+.nav__cta{justify-self:end;position:relative;overflow:hidden;isolation:isolate;display:inline-flex;align-items:center;height:44px;padding:0 24px;border:1px solid currentColor;border-radius:999px;font-size:14px;font-weight:var(--w-body)}
+.nav__cta{transition:background-color .5s var(--ease),border-color .5s var(--ease)}
+.nav__cta:hover{background:var(--on-dark);border-color:var(--on-dark)}
+.nav.ink .nav__cta:hover{background:var(--ink);border-color:var(--ink)}
+.nav__cta span{transition:color .5s var(--ease)}
+.nav__cta:hover span{color:var(--ink)}
+.nav.ink .nav__cta:hover span{color:var(--bone)}
+
+/* =========================================================
+   HERO
+   ========================================================= */
+.film{position:relative;height:1000vh;background:var(--espresso)}
+.film__stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+.film__canvas,.film__poster{position:absolute;inset:0;width:100%;height:100%}
+.film__poster{object-fit:cover}
+.film__canvas{transform-origin:50% 55%;will-change:transform}
+.film__top{position:absolute;inset:0 0 auto;height:30%;pointer-events:none;background:linear-gradient(to bottom,rgba(16,12,9,.55),rgba(16,12,9,0))}
+.film__low{position:absolute;inset:auto 0 0;height:55%;pointer-events:none;background:linear-gradient(to top,rgba(16,12,9,.8),rgba(16,12,9,.3) 55%,rgba(16,12,9,0))}
+.film__dim{position:absolute;inset:0;pointer-events:none;background:radial-gradient(80% 70% at 50% 45%,rgba(16,12,9,.3),rgba(16,12,9,.66));opacity:0}
+.shadowed{text-shadow:0 1px 2px rgba(0,0,0,.35),0 2px 28px rgba(0,0,0,.35)}
+
+.intro{position:absolute;inset:auto var(--m) 48px;display:grid;justify-items:center;gap:16px;text-align:center;color:var(--on-dark)}
+.intro .label{color:var(--on-dark)}
+.intro__hint{display:flex;align-items:center;gap:16px;font-size:16px;font-weight:var(--w-body)}
+.intro__hint i{position:relative;width:1px;height:44px;background:rgba(241,235,226,.35);overflow:hidden}
+.intro__hint i::after{content:"";position:absolute;inset:0;background:var(--on-dark);animation:drip 2.4s var(--ease) infinite}
+@keyframes drip{0%{transform:translateY(-100%)}60%,100%{transform:translateY(100%)}}
+
+.room{position:absolute;right:var(--m);bottom:56px;width:min(440px,calc(100% - 2*var(--m)));display:grid;gap:12px;color:var(--on-dark);opacity:0;transform:translateY(16px);pointer-events:none}
+.room .label{color:var(--on-dark)}
+.room h2{font:400 var(--t-h3)/1.05 var(--display);color:var(--on-dark)}
+.room p{font-size:16.5px;font-weight:var(--w-body);color:var(--on-dark)}
+.rail{position:absolute;left:var(--m);top:50%;translate:0 -50%;display:grid;grid-template-columns:auto 1px;column-gap:20px;color:var(--on-dark);opacity:0}
+.rail ol{list-style:none;margin:0;padding:0;display:grid;gap:28px;text-align:left}
+.rail li{display:grid;gap:4px;opacity:.5;transition:opacity .5s}
+.rail li.on{opacity:1}
+.rail li b{font:400 22px/1 var(--display)}
+.rail li span{font:var(--w-body) 10px/1 var(--body);letter-spacing:.22em;text-transform:uppercase}
+.rail__track{position:relative;background:rgba(241,235,226,.25)}
+.rail__track i{position:absolute;inset:0 0 auto;height:100%;background:var(--on-dark);transform-origin:top;transform:scaleY(0)}
+
+.finale{position:absolute;inset:0;display:grid;align-content:center;justify-items:center;gap:40px;text-align:center;color:var(--on-dark);opacity:0;pointer-events:none;padding-inline:var(--m)}
+.finale .display{color:var(--on-dark);text-align:center;font-size:clamp(60px,9.4vw,168px)}
+.finale .display>span{display:block;white-space:nowrap}
+.finale p{color:var(--on-dark);max-width:40ch;margin-inline:auto;font-weight:var(--w-body);font-size:18px}
+.finale__cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+
+/* =========================================================
+   01 · הסטודיו
+   ========================================================= */
+.studio{background:var(--bone);overflow:clip}
+.studio__intro{padding-top:var(--sy);padding-bottom:calc(var(--sy) * .6)}
+.row-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--sy)}
+.statement{font:300 clamp(40px,6vw,100px)/1 var(--display);letter-spacing:-.02em;color:var(--ink);width:fit-content;margin-inline:auto;text-align:left}
+.statement>span{display:block;white-space:nowrap}
+.statement>span:nth-child(2){padding-left:1.3em}
+.statement>span:nth-child(3){padding-left:.5em}
+.statement>span:nth-child(4){padding-left:1.9em}
+.statement .w{display:inline-block;opacity:.12;transform:translateY(.12em);transition:opacity .7s var(--ease),transform .9s var(--ease)}
+.statement .w.lit{opacity:1;transform:none}
+.pill{display:inline-block;vertical-align:-.04em;height:.78em;width:0;border-radius:999px;overflow:hidden;margin-inline:.08em;position:relative}
+.pill img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.4)}
+
+.expand{position:relative;height:200vh}
+.expand__stage{position:sticky;top:0;height:100vh;height:100svh;display:grid;place-items:center;overflow:hidden}
+.expand__frame{position:relative;width:100%;height:100%;overflow:hidden;clip-path:inset(22% 30% 22% 30% round 4px);will-change:clip-path}
+.expand__frame img{width:100%;height:100%;object-fit:cover;transform:scale(1.3);will-change:transform}
+.expand__cap{position:absolute;inset:auto var(--m) 48px;display:flex;justify-content:space-between;align-items:end;color:var(--on-dark);opacity:0}
+.expand__cap .h2{color:var(--on-dark)}
+.expand__cap .label{color:var(--on-dark)}
+
+.studio__body{padding-block:var(--sy);align-items:start}
+.studio__text{grid-column:1/span 3;display:grid;gap:40px;justify-items:start;padding-inline-end:16px}
+.stats{grid-column:4/-1;display:grid;grid-template-columns:repeat(3,1fr);column-gap:var(--gap)}
+.stat{display:grid;gap:16px;align-content:start;justify-items:start;text-align:right;padding-inline-start:28px}
+.stat .label.en{direction:ltr;unicode-bidi:isolate}
+.stat__n{justify-self:start}
+.stat__n{display:flex;align-items:flex-start;gap:4px;overflow:hidden;font:300 clamp(80px,9vw,150px)/.82 var(--display);color:var(--ink);letter-spacing:-.04em}
+.stat__n span{display:inline-block;transform:translateY(105%)}
+.stat__n sup{font-size:.32em;line-height:1;margin-top:.12em;color:var(--amber);transform:translateY(105%);display:inline-block}
+.stat.in .stat__n span,.stat.in .stat__n sup{transform:none;transition:transform 1.3s var(--ease)}
+.stat.in .stat__n sup{transition-delay:.15s}
+.stat p{font-size:16px;line-height:1.65;max-width:19ch;margin-top:8px;color:var(--ink-2)}
+.stat .label{color:#9A6A3E}
+
+/* טקסט שנכתב בגלילה */
+.scrub .sw{opacity:.16;transition:opacity .5s var(--ease)}
+.scrub .sw.on{opacity:1}
+
+/* =========================================================
+   02 · המעצבת
+   ========================================================= */
+.about{position:relative;background:linear-gradient(to bottom,var(--bone),var(--linen));height:max(112vh,900px);overflow:hidden}
+.about__arch{position:absolute;left:50%;bottom:0;width:clamp(320px,36vw,600px);height:80%;margin-left:calc(clamp(320px,36vw,600px) / -2);border-radius:999px 999px 0 0;background:linear-gradient(to bottom,#cdbba4,#b9a387);clip-path:circle(0);will-change:clip-path}
+.about__ring{position:absolute;left:50%;bottom:0;width:clamp(380px,44vw,740px);height:90%;margin-left:calc(clamp(380px,44vw,740px) / -2);border-radius:999px 999px 0 0;border:1px solid rgba(94,80,70,.25);border-bottom:0;transform-origin:50% 100%;transform:scale(.03);opacity:0}
+.about__name{position:absolute;inset-inline:0;top:44%;translate:0 -50%;white-space:nowrap;pointer-events:none;user-select:none;opacity:0}
+.about__track{display:inline-flex;font:300 clamp(120px,21vw,360px)/.8 var(--display);letter-spacing:-.03em;color:rgba(94,80,70,.3);will-change:transform}
+.about__track span{padding-right:.35em}
+.about__portrait{position:absolute;left:50%;bottom:0;translate:-50% 0;height:92%;z-index:2;opacity:0;transform:translateY(14%);will-change:transform,opacity}
+.about__portrait img{height:100%;width:auto;max-width:none}
+.about__tag{position:absolute;z-index:3;left:calc(50% + clamp(130px,11vw,200px));bottom:16%;display:grid;gap:4px;padding:16px 24px;border-radius:4px;background:rgba(241,235,226,.6);backdrop-filter:blur(16px) saturate(1.2);-webkit-backdrop-filter:blur(16px) saturate(1.2);border:1px solid rgba(255,255,255,.55);opacity:0;transform:translateX(-32px)}
+.about__tag b{font:400 22px/1.1 var(--display);color:var(--ink)}
+.about__tag span{font-size:13.5px;font-weight:var(--w-body)}
+.about__text{position:absolute;z-index:3;right:var(--m);bottom:var(--sy);width:min(30%,440px);display:grid;gap:24px;justify-items:start}
+.about__quote{position:absolute;z-index:3;left:var(--m);bottom:var(--sy);width:min(24%,340px);display:grid;gap:16px}
+.about__quote .h3{text-align:left}
+.about__top{position:absolute;z-index:3;inset:var(--sy) var(--m) auto;display:flex;justify-content:space-between}
+
+/* =========================================================
+   03 · פרויקטים
+   ========================================================= */
+.work{position:relative;background:var(--espresso);padding-block:var(--sy);overflow:clip;clip-path:inset(0 var(--rise,0%) 0 var(--rise,0%));will-change:clip-path}
+.work__tex{position:absolute;inset:0;background:url("img/tex-walnut.webp") center/cover;opacity:.16;pointer-events:none;-webkit-mask-image:linear-gradient(to bottom,#000,transparent 70%);mask-image:linear-gradient(to bottom,#000,transparent 70%)}
+.glow{position:absolute;width:70vw;aspect-ratio:1;border-radius:50%;background:radial-gradient(closest-side,rgba(200,143,90,.16),transparent);pointer-events:none}
+.work__head{position:relative;z-index:2;margin-bottom:-.3em}
+.work__head .display{text-align:right;white-space:nowrap}
+.work__head .display>span{display:block}
+.work__head .display>span+span{padding-right:1.2em}
+.work__intro{position:relative;z-index:2;align-items:start;margin-bottom:var(--sy)}
+.work__intro p{grid-column:1/span 4;margin-top:32px}
+.work__intro .label{grid-column:12/span 1;justify-self:end;margin-top:40px}
+.gallery{position:relative;z-index:1;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gap);row-gap:var(--sy)}
+.proj{display:grid;gap:20px;align-content:start;cursor:none}
+.proj__img{position:relative;overflow:hidden;clip-path:inset(100% 0 0 0);transition:clip-path 1.6s var(--ease-io)}
+.proj.in .proj__img{clip-path:inset(0 0 0 0)}
+.proj__img img{width:100%;height:115%;object-fit:cover;transform:scale(1.25);transition:transform 1.8s var(--ease-io),scale 1.2s var(--ease),filter 1.2s var(--ease);will-change:transform}
+.proj.in .proj__img img{transform:scale(1)}
+.proj:hover .proj__img img{scale:1.06}
+.proj__cap{display:grid;grid-template-columns:auto 1fr;column-gap:20px;row-gap:6px;opacity:0;transform:translateY(16px);transition:opacity 1s var(--ease) .5s,transform 1s var(--ease) .5s}
+.proj.in .proj__cap{opacity:1;transform:none}
+.proj__no{grid-row:span 2;font:var(--w-body) 12px/2.4 var(--body);letter-spacing:.2em;color:var(--amber-l)}
+.proj__cap .h3{color:var(--on-dark)}
+.proj__cap p{grid-column:2;font-size:16px;max-width:40ch}
+.proj__meta{grid-column:2;font:var(--w-body) var(--t-label)/1.4 var(--body);letter-spacing:.22em;text-transform:uppercase;color:var(--on-dark-3)}
+.p1{grid-column:1/span 5}.p1 .proj__img{aspect-ratio:3/4}
+.p2{grid-column:7/span 5;margin-top:28vh}.p2 .proj__img{aspect-ratio:4/5}
+.p3{grid-column:2/span 9}.p3 .proj__img{aspect-ratio:3/2}
+.p4{grid-column:1/span 4}.p4 .proj__img{aspect-ratio:3/4}
+.p5{grid-column:6/span 3;margin-top:22vh}.p5 .proj__img{aspect-ratio:4/5}
+.p6{grid-column:10/span 3;margin-top:8vh}.p6 .proj__img{aspect-ratio:1/1}
+.work__more{position:relative;z-index:2;margin-top:var(--sy);display:flex;justify-content:center}
+.bignum{position:absolute;z-index:0;font:300 clamp(240px,30vw,520px)/.8 var(--display);color:rgba(241,235,226,.035);pointer-events:none;user-select:none}
+
+/* רצועת מילים שזזה לפי מהירות הגלילה */
+.band{position:relative;background:var(--espresso);overflow:hidden;padding-block:calc(var(--sy) * .5);white-space:nowrap}
+.band__row{display:inline-flex;font:300 clamp(64px,9vw,150px)/1 var(--display);color:transparent;-webkit-text-stroke:1px rgba(241,235,226,.32);will-change:transform}
+.band__row span{padding-inline:.4em}
+.band__row i{font-style:normal;color:var(--amber);-webkit-text-stroke:0;font-size:.4em;align-self:center}
+
+/* =========================================================
+   04 · תהליך: גלילה אופקית, מילה ענקית שחוצה את התמונה
+   ========================================================= */
+.process{position:relative;background:var(--espresso-2);color:var(--on-dark-2)}
+.process__pin{position:relative}
+.process__stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+.process__tex{position:absolute;inset:0;background:url("img/tex-walnut.webp") center/cover;opacity:.1;pointer-events:none}
+.process__top{position:absolute;z-index:5;inset:120px var(--m) auto;display:flex;justify-content:space-between;align-items:center}
+.pdots{display:flex;gap:28px;direction:ltr}
+.pdots b{font:400 18px/1 var(--display);color:var(--on-dark-3);transition:color .5s}
+.pdots b.on{color:var(--amber-l)}
+.ptrack{position:relative;height:100%;display:flex;will-change:transform}
+.pslide{position:relative;flex:0 0 100vw;height:100%}
+.pslide--intro{display:grid;align-content:center;padding-inline:var(--m);gap:40px}
+.pslide--intro .h2{text-align:right}
+.pslide--intro .h2>span{display:block;white-space:nowrap}
+.pslide--intro .h2>span+span{padding-right:.9em}
+.pslide--intro p{max-width:42ch}
+.pslide__img{position:absolute;left:50%;top:52%;width:min(30vw,520px);aspect-ratio:4/5;translate:-50% -50%;overflow:hidden;will-change:transform}
+.pslide__img img{width:100%;height:100%;object-fit:cover;transform:scale(1.15)}
+.pslide__sm{position:absolute;width:min(14vw,240px);aspect-ratio:3/4;overflow:hidden;z-index:2;will-change:transform;box-shadow:0 30px 60px rgba(0,0,0,.35)}
+.pslide__sm img{width:100%;height:100%;object-fit:cover}
+.pslide:nth-child(odd) .pslide__sm{left:14vw;top:18%}
+.pslide:nth-child(even) .pslide__sm{right:12vw;bottom:14%}
+.pslide__word{position:absolute;z-index:3;top:50%;left:50%;translate:-50% -50%;white-space:nowrap;font:300 clamp(96px,15vw,280px)/.8 var(--display);letter-spacing:-.03em;color:var(--on-dark);pointer-events:none;will-change:transform}
+.pslide__txt{position:absolute;z-index:4;right:var(--m);bottom:10vh;width:min(26vw,380px);display:grid;gap:14px}
+.pslide:nth-child(even) .pslide__txt{right:auto;left:var(--m)}
+.pslide__n{display:flex;justify-content:space-between;align-items:baseline}
+.pslide__n b{font:400 28px/1 var(--display);color:var(--amber-l)}
+.pslide__txt p{font-size:16.5px;color:var(--on-dark)}
+
+/* =========================================================
+   05 · המלצות
+   ========================================================= */
+.voices{position:relative;height:100vh;height:100svh;min-height:640px;overflow:hidden;color:var(--on-dark);background:var(--espresso)}
+.voices__bg{position:absolute;inset:0}
+.voices__bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.14);transition:opacity 1.6s var(--ease),transform 9s linear}
+.voices__bg img.on{opacity:1;transform:scale(1)}
+.voices__shade{position:absolute;inset:0;background:radial-gradient(70% 70% at 50% 55%,rgba(16,12,9,.58),rgba(16,12,9,.86))}
+.voices__in{position:relative;height:100%;display:grid;grid-template-rows:auto 1fr auto;padding-block:var(--sy) 64px;text-align:center}
+.voices__in>.label{color:var(--on-dark-3)}
+.quotes{display:grid;align-self:center;justify-items:center}
+.quote{grid-area:1/1;display:grid;gap:32px;justify-items:center;opacity:0;pointer-events:none;width:min(900px,100%)}
+.quote.on{opacity:1;pointer-events:auto}
+.quote blockquote{font:var(--w-body) clamp(24px,2.3vw,36px)/1.45 var(--body);color:var(--on-dark);max-width:none}
+.quote blockquote .ln{display:block;overflow:hidden}
+.quote blockquote .ln>span{display:block;transform:translateY(105%);transition:transform 1.1s var(--ease);transition-delay:calc(var(--i)*90ms)}
+.quote.on blockquote .ln>span{transform:none}
+.quote figcaption{display:grid;gap:6px;opacity:0;transition:opacity 1s var(--ease) .5s}
+.quote.on figcaption{opacity:1}
+.quote figcaption b{font:400 var(--t-h3)/1 var(--display);color:var(--on-dark)}
+.quote figcaption span{font:var(--w-body) var(--t-label)/1.4 var(--body);letter-spacing:.22em;text-transform:uppercase;color:var(--on-dark-3)}
+.qnav{display:flex;justify-content:center;gap:40px}
+.qnav button{all:unset;cursor:pointer;font:var(--w-body) 12px/1 var(--body);letter-spacing:.3em;color:var(--on-dark-3);transition:color .4s;padding:8px}
+.qnav button[aria-selected="true"]{color:var(--on-dark)}
+.qnav button:focus-visible{outline:1px solid var(--on-dark);outline-offset:4px}
+
+/* =========================================================
+   06 · צרו קשר ופוטר
+   ========================================================= */
+.contact{position:relative;background:var(--espresso);overflow:clip}
+.contact__in{padding-top:var(--sy)}
+.contact__head{align-items:end}
+.contact__head .h2{grid-column:1/span 8}
+.contact__head .h2>span{display:block;white-space:nowrap}
+.contact__head .h2>span+span{padding-right:1em}
+.contact__head p{grid-column:10/span 3}
+.form{margin-top:64px;display:grid;grid-template-columns:repeat(3,1fr) auto;align-items:end;column-gap:12px}
+.form label{display:grid;gap:12px}
+.form label span{font:var(--w-body) 14px/1 var(--body);letter-spacing:.02em;color:var(--on-dark-2);padding-inline:24px}
+.form input,.form select{width:100%;height:58px;background:rgba(241,235,226,.06);border:1px solid rgba(241,235,226,.14);border-radius:999px;color:var(--on-dark);font:var(--w-body) 16px/1 var(--body);padding:0 24px;outline:none;appearance:none;-webkit-appearance:none;transition:border-color .4s,background .4s}
+.form input:focus,.form select:focus{border-color:rgba(241,235,226,.55);background:rgba(241,235,226,.09)}
+.form input::placeholder{color:rgba(241,235,226,.45)}
+.form select{cursor:pointer}
+.form select option{color:var(--ink)}
+.form__ok{margin-top:16px;min-height:1.6em;font-size:15px;color:var(--on-dark)}
+.footer__row{padding-block:var(--sy) 64px;font-size:15.5px}
+.footer__row div{grid-column:span 3;display:grid;gap:8px;align-content:start}
+.footer__row a{color:var(--on-dark);transition:opacity .3s}
+.footer__row a:hover{opacity:.6}
+.footer__word{position:relative;font:700 clamp(140px,31vw,560px)/.74 var(--display);letter-spacing:.12em;margin-left:.12em;text-align:center;user-select:none;pointer-events:none;
+  background:url("img/living-full.webp") 50% 50%/cover;-webkit-background-clip:text;background-clip:text;color:transparent;translate:0 .1em;will-change:background-position}
+.footer__legal{position:relative;z-index:1;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:24px;padding-block:24px;background:var(--espresso);font-size:13.5px;color:var(--on-dark-3)}
+.footer__legal>span:last-child{justify-self:end}
+.credit{display:inline-flex;align-items:center;gap:12px;color:var(--on-dark-2);transition:opacity .3s}
+.credit img{height:22px;width:auto;display:block}
+.credit:hover{opacity:.7}
+
+/* =========================================================
+   כניסות
+   ========================================================= */
+.split .ch{display:inline-block;opacity:0;translate:0 .45em;filter:blur(8px);transition:opacity 1.1s var(--ease),translate 1.1s var(--ease),filter 1.1s var(--ease);transition-delay:calc(var(--i) * 24ms)}
+.split.in .ch{opacity:1;translate:0 0;filter:none}
+.lines .ln{display:block;overflow:hidden}
+.lines .ln>span{display:block;translate:0 105%;transition:translate 1.1s var(--ease);transition-delay:calc(var(--i) * 90ms)}
+.lines.in .ln>span{translate:0 0}
+.fade{opacity:0;translate:0 24px;transition:opacity 1.1s var(--ease),translate 1.1s var(--ease)}
+.fade.in{opacity:1;translate:0 0}
+[data-lift]{will-change:transform}
+
+/* =========================================================
+   טאבלט ומובייל
+   ========================================================= */
+@media (max-width:1100px){
+  .nav__links{display:none}
+  .nav{grid-template-columns:1fr auto}
+  .studio__text,.stats{grid-column:1/-1}
+  .stats{margin-top:64px}
+  .contact__head .h2,.contact__head p{grid-column:1/-1}
+  .contact__head p{margin-top:32px}
+  .about__text{width:min(36%,420px)}
+  .about__quote{display:none}
+  .pslide__txt{width:min(40vw,380px)}
+}
+@media (max-width:760px){
+  :root{--t-body:16.5px;--gap:16px}
+  .nav{height:72px}
+  .mark span{display:none}
+  .nav__cta{height:40px;padding:0 16px;font-size:13px}
+  .intro{bottom:32px}
+  .room{bottom:32px}
+  .rail{display:none}
+  .finale{gap:32px}
+  .finale .display{font-size:clamp(44px,13.6vw,80px)}
+  .statement{font-size:clamp(30px,8.4vw,44px);width:auto;padding-inline:var(--m)}
+  .statement>span{white-space:normal}
+  .statement>span:nth-child(n){padding-left:0}
+  .stats{grid-template-columns:repeat(3,1fr)}
+  .stat__n{font-size:56px}
+  .stat p{font-size:13.5px}
+  .stat{padding-inline-start:0}
+  .studio__text{padding-inline-end:0}
+  .about{height:auto;padding-top:var(--sy);display:grid}
+  .about__top{position:static;padding-inline:var(--m);margin-bottom:48px}
+  .about__stage{position:relative;display:block;height:min(118vw,480px)}
+  .about__name{top:40%}
+  .about__portrait{height:100%}
+  .about__arch{width:72vw;margin-left:-36vw;height:86%}
+  .about__ring{width:86vw;margin-left:-43vw}
+  .about__tag{left:auto;right:var(--m);bottom:24px}
+  .about__text{position:static;width:auto;padding:48px var(--m) var(--sy)}
+  .work{clip-path:none}
+  .work__head .display{font-size:clamp(52px,15vw,96px)}
+  .work__head .display>span+span{padding-right:.5em}
+  .work__intro p{grid-column:1/-1}
+  .work__intro .label{display:none}
+  .gallery{row-gap:72px}
+  .proj{grid-column:1/-1!important;margin-top:0!important}
+  .p4,.p5{grid-column:span 6!important}
+  .band__row{font-size:56px}
+  .process__pin{height:auto!important}
+  .process__stage{position:relative;height:auto;padding-block:var(--sy)}
+  .process__top{position:static;margin-bottom:48px}
+  .pdots{display:none}
+  .ptrack{flex-direction:column;transform:none!important;height:auto;gap:96px}
+  .pslide{flex:none;height:auto;display:grid;gap:24px;padding-inline:var(--m)}
+  .pslide--intro{padding:0 var(--m)}
+  .pslide--intro .h2{font-size:clamp(40px,11vw,64px)}
+  .pslide--intro .h2>span{white-space:normal}
+  .pslide__img{position:relative;left:auto;top:auto;translate:none;width:100%}
+  .pslide__sm{display:none}
+  .pslide__word{position:relative;top:auto;left:auto;translate:none;font-size:64px;text-align:right;order:-1;transform:none!important}
+  .pslide__txt{position:static;width:auto}
+  .contact__head .h2{font-size:clamp(44px,12vw,72px)}
+  .form{grid-template-columns:1fr;row-gap:16px}
+  .form .btn{justify-content:space-between;margin-top:8px}
+  .footer__row{row-gap:32px}
+  .footer__row div{grid-column:span 6}
+  .footer__legal{grid-template-columns:1fr;justify-items:start;gap:16px}
+  .footer__legal>span:last-child{justify-self:start}
+}
+@media (min-width:761px){.about__stage{display:contents}}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition-duration:.01ms!important}
+  .film{height:auto}
+  .film__stage{position:relative;height:100svh}
+  .film__canvas,.room,.rail,.intro{display:none}
+  .finale{opacity:1;pointer-events:auto}
+  .film__dim{opacity:1}
+  .split .ch,.lines .ln>span,.fade{opacity:1;translate:none;filter:none}
+  .statement .w,.scrub .sw{opacity:1;transform:none}
+  .pill{width:1.6em}
+  .expand{height:auto}
+  .expand__stage{position:relative}
+  .expand__frame{clip-path:none}
+  .about__arch,.about__ring,.about__portrait,.about__tag,.about__name{transform:none;opacity:1;clip-path:none}
+  .proj__img{clip-path:none}
+  .proj__cap{opacity:1;transform:none}
+  .work{clip-path:none}
+}
+</style>
+</head>
+<body>
+
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="loader__in">
+    <div class="loader__mark en">EVEN</div>
+    <div class="loader__pct en" id="loader-pct">00</div>
+  </div>
+</div>
+<div class="cursor" id="cursor" aria-hidden="true">View</div>
+
+<header class="nav" id="nav">
+  <a class="mark en" href="#top" aria-label="EVEN, לראש העמוד"><b>EVEN</b><span>INTERIORS</span></a>
+  <nav class="nav__links" aria-label="ניווט ראשי">
+    <a href="#studio" data-roll>הסטודיו</a>
+    <a href="#about" data-roll>נועה אבן</a>
+    <a href="#work" data-roll>פרויקטים</a>
+    <a href="#process" data-roll>תהליך</a>
+  </nav>
+  <a class="nav__cta" href="#contact"><span>פגישת היכרות</span></a>
+</header>
+
+<main>
+<!-- ================= HERO ================= -->
+<section class="film" id="top" aria-labelledby="hero-title" data-l="121" data-k="190" data-b="80" data-nav="dark">
+  <div class="film__stage">
+    <img class="film__poster" src="frames/f0000.webp" alt="סלון ריק בגובה כפול עם קיר עץ אגוז מחורץ וחלון אל עצי זית והים בשקיעה">
+    <canvas class="film__canvas" id="canvas" aria-hidden="true"></canvas>
+    <div class="film__top"></div>
+    <div class="film__low" id="low"></div>
+    <div class="film__dim" id="dim"></div>
+
+    <div class="intro shadowed" id="intro">
+      <span class="label en">Villa Olea — Caesarea</span>
+      <div class="intro__hint"><i></i><span>גללו, והבית יתמלא</span></div>
+    </div>
+
+    <div class="room shadowed"><span class="label en">I — The Living Room</span><h2 class="en">Light, then everything else.</h2><p>חלל ריק הוא הבטחה. נכנס אליו רק מה שמשרת את האור, את השקט ואת האנשים שגרים בו.</p></div>
+    <div class="room shadowed"><span class="label en">II — The Kitchen</span><h2 class="en">One stone, nothing more.</h2><p>אי אחד מטרוורטין חום, קיר אגוז מחורץ, ושלושה פנסי זכוכית שמחזיקים את כל הערב.</p></div>
+    <div class="room shadowed"><span class="label en">III — The Master Suite</span><h2 class="en">Where the day ends.</h2><p>קיר אגוז, אור של אלבסטר ושעה כחולה מעל הים.</p></div>
+
+    <nav class="rail shadowed" id="rail" aria-hidden="true">
+      <ol>
+        <li><b class="en">I</b><span class="en">Living</span></li>
+        <li><b class="en">II</b><span class="en">Kitchen</span></li>
+        <li><b class="en">III</b><span class="en">Suite</span></li>
+      </ol>
+      <div class="rail__track"><i id="rail-fill"></i></div>
+    </nav>
+
+    <div class="finale" id="finale">
+      <h1 class="display en shadowed" id="hero-title"><span>The Art of</span><span>Quiet Living</span></h1>
+      <p class="shadowed">סטודיו EVEN מתכנן ומעצב בתים פרטיים שקטים, מדויקים וחמים. מהסקיצה הראשונה ועד הכרית האחרונה.</p>
+      <div class="finale__cta">
+        <a class="btn btn--light" href="#contact">לתיאום פגישת היכרות</a>
+        <a class="btn btn--ghost-l" href="#work">לפרויקטים</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 01 · הסטודיו ================= -->
+<section class="studio" id="studio" aria-labelledby="studio-title" data-nav="light">
+  <div class="studio__intro plaster guides">
+    <div class="tex"></div><div class="gobo"></div><div class="shade"></div>
+    <div class="wrap row-top label"><span>(01) — הסטודיו</span><span class="en">Est. 2008</span></div>
+    <h2 class="statement en" id="studio-title" data-statement>
+      <span>We don't decorate rooms.</span>
+      <span>We compose <i class="pill" data-pill><img src="img/pj-stair.webp" alt=""></i> the quiet</span>
+      <span>between the walls, <i class="pill" data-pill><img src="img/pj-library.webp" alt=""></i></span>
+      <span>the light <i class="pill" data-pill><img src="img/pj-bath.webp" alt=""></i> and you.</span>
+    </h2>
+  </div>
+
+  <div class="expand" id="expand">
+    <div class="expand__stage">
+      <div class="expand__frame" id="expand-frame"><img src="img/kitchen-full.webp" alt="מטבח עם קיר אגוז מחורץ, אי מטרוורטין חום ושלושה פנסי זכוכית ענבר בשקיעה" id="expand-img"></div>
+      <div class="expand__cap shadowed" id="expand-cap"><h3 class="h2 en">Villa Olea</h3><span class="label en">Caesarea · 620 m² · 2026</span></div>
+    </div>
+  </div>
+
+  <div class="plaster guides">
+    <div class="tex"></div><div class="shade"></div>
+    <div class="wrap grid studio__body">
+      <div class="studio__text">
+        <p class="scrub">EVEN הוא סטודיו בוטיק לאדריכלות ועיצוב פנים בתל אביב. אנחנו לוקחים שישה בתים בשנה, לא יותר, כדי שכל החלטה, מגובה המדף ועד הגוון של הטיח, תתקבל ביד שלנו.</p>
+        <a class="btn btn--ghost fade" href="#about">להכיר את נועה</a>
+      </div>
+      <div class="stats">
+        <div class="stat"><span class="label en">Since 2008</span><div class="stat__n en"><span data-count="18">18</span></div><p>שנים של בתים פרטיים, מתל אביב ועד הגליל.</p></div>
+        <div class="stat"><span class="label en">Homes</span><div class="stat__n en"><span data-count="146">146</span><sup>+</sup></div><p>בתים שנמסרו מוכנים, עד הכרית האחרונה.</p></div>
+        <div class="stat"><span class="label en">Per year</span><div class="stat__n en"><span data-count="6">6</span></div><p>פרויקטים בשנה, לא יותר. כל אחד ביד של נועה.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 02 · המעצבת ================= -->
+<section class="about plaster" id="about" aria-labelledby="about-title" data-nav="light">
+  <div class="tex"></div><div class="gobo"></div>
+  <div class="about__top label"><span>(02) — המעצבת</span><span class="en">Founder &amp; Principal</span></div>
+  <div class="about__stage">
+    <div class="about__ring" id="ring" aria-hidden="true"></div>
+    <div class="about__arch" id="arch" aria-hidden="true"></div>
+    <div class="about__name en" id="aname" aria-hidden="true"><div class="about__track" id="track"><span>Noa Even</span><span>Noa Even</span><span>Noa Even</span><span>Noa Even</span></div></div>
+    <figure class="about__portrait" id="portrait"><img src="img/noa-cutout.webp" alt="נועה אבן, מייסדת הסטודיו, מחזיקה דוגמת טרוורטין וגליל פשתן"></figure>
+    <div class="about__tag" id="atag"><b class="en">Noa Even</b><span>מייסדת ומעצבת ראשית</span></div>
+  </div>
+  <div class="about__text">
+    <h2 class="h3 en split" id="about-title">Twenty years of listening first.</h2>
+    <p class="scrub">נועה אבן למדה אדריכלות בבצלאל ועיצוב פנים במילאנו, ועבדה עשר שנים בסטודיואים באירופה לפני שפתחה את EVEN. היא עדיין מגיעה לכל פגישת היכרות בעצמה, ותמיד מתחילה מאותה שאלה: איך נראה אצלכם יום רגיל?</p>
+    <a class="btn btn--ghost fade" href="#contact">לפגישה עם נועה</a>
+  </div>
+  <div class="about__quote">
+    <span class="label en">Her rule</span>
+    <p class="h3 en split">“A home should feel inevitable.”</p>
+  </div>
+</section>
+
+<!-- ================= 03 · פרויקטים ================= -->
+<section class="work dark" id="work" aria-labelledby="work-title" data-nav="dark">
+  <div class="work__tex" aria-hidden="true"></div>
+  <div class="glow" aria-hidden="true" style="left:-20vw;top:30%" data-lift=".08"></div>
+  <div class="glow" aria-hidden="true" style="right:-25vw;top:65%" data-lift="-.06"></div>
+  <div class="wrap work__head">
+    <h2 class="display en" id="work-title"><span class="split">Selected</span><span class="split">Work</span></h2>
+  </div>
+  <div class="wrap grid work__intro">
+    <span class="label en">(03) — 2024–2026</span>
+    <p class="scrub">שישה בתים מהשנתיים האחרונות. בכל אחד מהם התחלנו מאותה שאלה: איך אתם רוצים להרגיש כשאתם פותחים את הדלת בערב?</p>
+  </div>
+  <div class="wrap gallery" id="gallery">
+    <span class="bignum en" aria-hidden="true" style="top:-6%;left:0" data-lift=".18">VI</span>
+    <article class="proj p1"><div class="proj__img"><img src="img/pj-penthouse.webp" alt="פנטהאוז בתל אביב בשעה הכחולה, ספת קטיפה חומה מול חלון לים" loading="lazy" data-speed=".06"></div>
+      <div class="proj__cap"><span class="proj__no en">01</span><h3 class="h3 en">The Sea Penthouse</h3><span class="proj__meta en">Tel Aviv · 240 m² · 2025</span><p>הורדנו קירות, השארנו את הים, והוספנו רק עץ אגוז, קטיפה ואור חם שנדלק עם השקיעה.</p></div></article>
+    <article class="proj p2"><div class="proj__img"><img src="img/pj-dining.webp" alt="חדר אוכל עם שולחן אגוז, כיסאות עור קוניאק ואשכול מנורות נחושת" loading="lazy" data-speed=".1"></div>
+      <div class="proj__cap"><span class="proj__no en">02</span><h3 class="h3 en">The Long Table</h3><span class="proj__meta en">Zichron Ya’akov · 310 m² · 2025</span><p>חדר אוכל לשמונה־עשר איש, ואשכול של זכוכית נחושת שמחזיק את כל הערב.</p></div></article>
+    <article class="proj p3"><div class="proj__img"><img src="img/pj-library.webp" alt="ספרייה פרטית עם מדפי אגוז מוארים, כורסת עור ושולחן טרוורטין מול חלון לזיתים" loading="lazy" data-speed=".05"></div>
+      <div class="proj__cap"><span class="proj__no en">03</span><h3 class="h3 en">The Reading Room</h3><span class="proj__meta en">Savyon · 380 m² · 2025</span><p>ספרייה שנבנתה סביב חלון אחד ועץ זית אחד. כל מדף מואר מבפנים, כמו ויטרינה.</p></div></article>
+    <article class="proj p4"><div class="proj__img"><img src="img/pj-bath.webp" alt="אמבטיה חצובה משיש חום כהה מול קיר טרוורטין וחריץ אור" loading="lazy" data-speed=".09"></div>
+      <div class="proj__cap"><span class="proj__no en">04</span><h3 class="h3 en">The Stone Bath</h3><span class="proj__meta en">Caesarea · 2024</span><p>גוש שיש אחד, חריץ אור אחד.</p></div></article>
+    <article class="proj p5"><div class="proj__img"><img src="img/pj-stair.webp" alt="מבואה עם מדרגות ספירליות מטיח בהיר וקרן אור מחלון גג" loading="lazy" data-speed=".14"></div>
+      <div class="proj__cap"><span class="proj__no en">05</span><h3 class="h3 en">The Spiral</h3><span class="proj__meta en">Herzliya · 2024</span><p>מדרגות שהן פסל.</p></div></article>
+    <article class="proj p6"><div class="proj__img"><img src="img/pj-dressing.webp" alt="חדר ארונות מאגוז מחורץ עם אי טרוורטין ופוף בוקלה" loading="lazy" data-speed=".07"></div>
+      <div class="proj__cap"><span class="proj__no en">06</span><h3 class="h3 en">The Dressing Room</h3><span class="proj__meta en">Ramat Gan · 2024</span><p>אגוז, עור ופליז.</p></div></article>
+  </div>
+  <div class="wrap work__more"><a class="btn btn--light" href="#contact">לכל הפרויקטים</a></div>
+</section>
+
+<div class="band" aria-hidden="true"><div class="band__row en" id="band"><span>Listening</span><i>✦</i><span>Concept</span><i>✦</i><span>Materials</span><i>✦</i><span>The Key</span><i>✦</i><span>Listening</span><i>✦</i><span>Concept</span><i>✦</i><span>Materials</span><i>✦</i><span>The Key</span><i>✦</i></div></div>
+
+<!-- ================= 04 · תהליך ================= -->
+<section class="process dark" id="process" aria-labelledby="process-title" data-nav="dark">
+  <div class="process__pin" id="ppin">
+    <div class="process__stage">
+      <div class="process__tex" aria-hidden="true"></div>
+      <div class="glow" aria-hidden="true" style="left:20%;top:-10%"></div>
+      <div class="process__top label"><span>(04) — תהליך</span><span class="pdots" id="pdots" aria-hidden="true"><b class="en">I</b><b class="en">II</b><b class="en">III</b><b class="en">IV</b></span><span class="en">From sketch to key</span></div>
+      <div class="ptrack" id="ptrack">
+        <div class="pslide pslide--intro">
+          <h2 class="h2 en" id="process-title"><span class="split">From the first sketch</span><span class="split">to the last cushion.</span></h2>
+          <p class="scrub">ארבעה שלבים, מנהלת פרויקט אחת ותאריך מסירה שנקבע ביום הראשון. אתם מקבלים כל החלטה פעם אחת, ואנחנו דואגים לכל השאר.</p>
+        </div>
+        <article class="pslide" data-step="0">
+          <figure class="pslide__img"><img src="img/portrait-1.webp" alt="נועה אבן בסטודיו עם דוגמת טרוורטין ופשתן" loading="lazy"></figure>
+          <figure class="pslide__sm"><img src="img/materials.webp" alt="" loading="lazy"></figure>
+          <span class="pslide__word en" aria-hidden="true">Listening</span>
+          <div class="pslide__txt"><div class="pslide__n"><b class="en">I.</b><span class="label">2–3 שבועות</span></div><h3 class="h3 en">Listening</h3><p>פגישה אצלכם בבית, שאלון הרגלים מפורט ומדידות. יוצאים עם תכנית העמדה ותקציב מפורק לסעיפים.</p></div>
+        </article>
+        <article class="pslide" data-step="1">
+          <figure class="pslide__img"><img src="img/ps-concept.webp" alt="שולחן עבודה עם סקיצות תכנית ומודל אדריכלי לבן" loading="lazy"></figure>
+          <figure class="pslide__sm"><img src="img/pj-stair.webp" alt="" loading="lazy"></figure>
+          <span class="pslide__word en" aria-hidden="true">Concept</span>
+          <div class="pslide__txt"><div class="pslide__n"><b class="en">II.</b><span class="label">4–6 שבועות</span></div><h3 class="h3 en">Concept</h3><p>סקיצות ביד, ואחריהן מודל תלת־ממדי מלא שאפשר להסתובב בו. משנים עכשיו, לא באמצע עבודות.</p></div>
+        </article>
+        <article class="pslide" data-step="2">
+          <figure class="pslide__img"><img src="img/ps-materials.webp" alt="לוח חומרים: טרוורטין, אגוז מחורץ, עור קוניאק, פשתן, בוקלה ופליז" loading="lazy"></figure>
+          <figure class="pslide__sm"><img src="img/kitchen-full.webp" alt="" loading="lazy"></figure>
+          <span class="pslide__word en" aria-hidden="true">Materials</span>
+          <div class="pslide__txt"><div class="pslide__n"><b class="en">III.</b><span class="label">3–4 שבועות</span></div><h3 class="h3 en">Materials</h3><p>לוח חומרים פיזי, דוגמאות בבית שלכם ובאור שלו, ותכנית תאורה לכל שעה ביום.</p></div>
+        </article>
+        <article class="pslide" data-step="3">
+          <figure class="pslide__img"><img src="img/ps-build.webp" alt="בעל מקצוע מתקין לוח אגוז מחורץ ליד לוחות טרוורטין" loading="lazy"></figure>
+          <figure class="pslide__sm"><img src="img/bedroom-full.webp" alt="" loading="lazy"></figure>
+          <span class="pslide__word en" aria-hidden="true">The Key</span>
+          <div class="pslide__txt"><div class="pslide__n"><b class="en">IV.</b><span class="label">לפי היקף</span></div><h3 class="h3 en">The Key</h3><p>פיקוח צמוד, בעלי מקצוע שעובדים איתנו שנים, ומסירה של בית מוכן לגמרי: עד הכרית האחרונה.</p></div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 05 · המלצות ================= -->
+<section class="voices" id="voices" aria-labelledby="voices-title" data-nav="dark">
+  <div class="voices__bg" id="vbg" aria-hidden="true">
+    <img src="img/pj-library.webp" alt="" class="on">
+    <img src="img/pj-penthouse.webp" alt="">
+    <img src="img/pj-dining.webp" alt="">
+  </div>
+  <div class="voices__shade"></div>
+  <div class="wrap voices__in">
+    <span class="label" id="voices-title">(05) — לקוחות</span>
+    <div class="quotes" id="quotes">
+      <figure class="quote on"><blockquote>ביקשנו בית שקט. קיבלנו בית שמרגיש כאילו תמיד היה שלנו. נועה שמעה דברים שלא ידענו להגיד.</blockquote><figcaption><b class="en">Michal &amp; Yonatan</b><span>וילה בסביון</span></figcaption></figure>
+      <figure class="quote"><blockquote>המודל התלת־ממדי חסך לנו טעויות של מאות אלפי שקלים. ראינו את הבית חצי שנה לפני שנבנה.</blockquote><figcaption><b class="en">Dana R.</b><span>פנטהאוז בתל אביב</span></figcaption></figure>
+      <figure class="quote"><blockquote>המסירה הייתה ביום שנקבע בפגישה הראשונה, עד הכרית האחרונה. לא האמנו שזה אפשרי בשיפוץ.</blockquote><figcaption><b class="en">The Levi Family</b><span>בית בזכרון יעקב</span></figcaption></figure>
+    </div>
+    <div class="qnav" id="qnav" role="tablist" aria-label="בחירת המלצה">
+      <button class="en" role="tab" aria-selected="true">01</button>
+      <button class="en" role="tab" aria-selected="false">02</button>
+      <button class="en" role="tab" aria-selected="false">03</button>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 06 · צרו קשר ================= -->
+<section class="contact dark" id="contact" aria-labelledby="contact-title" data-nav="dark">
+  <div class="contact__in guides">
+    <div class="wrap row-top label" style="margin-bottom:64px"><span>(06) — צרו קשר</span><span class="en">Two openings for 2027</span></div>
+    <div class="wrap grid contact__head">
+      <h2 class="h2 en" id="contact-title"><span class="split">Let’s begin</span><span class="split">with a conversation.</span></h2>
+      <p class="scrub">פגישת היכרות של שעה, בסטודיו או אצלכם בבית. בלי התחייבות, עם הרבה שאלות טובות. נשארו שני מקומות לפרויקטים שמתחילים ב־2027.</p>
+    </div>
+    <form class="wrap form fade" id="form" novalidate>
+      <label><span>שם מלא</span><input name="name" autocomplete="name" placeholder="איך קוראים לך?" required></label>
+      <label><span>טלפון</span><input name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="050-000-0000" required></label>
+      <label><span>סוג הפרויקט</span><select name="type"><option>בית פרטי או וילה</option><option>דירת גג או פנטהאוז</option><option>שיפוץ חדר או אגף</option></select></label>
+      <button class="btn btn--light" type="submit">שליחה</button>
+    </form>
+    <p class="wrap form__ok" id="ok" role="status" aria-live="polite"></p>
+    <div class="wrap grid footer__row">
+      <div><span class="label">סטודיו</span>שדרות רוטשילד 48, תל אביב<br>בתיאום מראש בלבד</div>
+      <div><span class="label">טלפון</span><a class="en" href="tel:+972500000000">050-000-0000</a></div>
+      <div><span class="label">מייל</span><a class="en" href="mailto:studio@even.example">studio@even.example</a></div>
+      <div><span class="label">עקבו</span><span><a class="en" href="#">Instagram</a> · <a class="en" href="#">Pinterest</a></span></div>
+    </div>
+  </div>
+  <footer>
+    <p class="footer__word en" id="fword" aria-hidden="true">EVEN</p>
+    <div class="wrap footer__legal"><span>© 2026 EVEN Interiors · אתר קונספט</span><a class="credit" href="https://tsivia.com" target="_blank" rel="noopener" aria-label="עיצוב ובניית האתר: צביה אלגרבלי, tsivia.com (נפתח בחלון חדש)"><span>עיצוב ובניית האתר</span><img src="img/tsivia-logo-full.svg" alt="" width="66" height="22"></a><span><a href="#">הצהרת נגישות</a> · <a href="#">מדיניות פרטיות</a></span></div>
+  </footer>
+</section>
+</main>
+
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+(() => {
+  const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+  const ease = t => 1 - Math.pow(1 - t, 3);
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const mobile = () => innerWidth <= 760;
+  const vh = () => innerHeight;
+  const prog = (el, start = 1, end = .2) => { const r = el.getBoundingClientRect(); return clamp((vh() * start - r.top) / (vh() * (start - end))); };
+
+  /* ---------- כפתורים: טקסט וחץ ---------- */
+  const ARROW = '<svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M12 12L4 4M4 4v6M4 4h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>';
+  const roll = t => '<span class="roll"><span data-t="' + t + '">' + t + '</span></span>';
+  $$('.btn').forEach(b => { const t = b.textContent.trim(); b.innerHTML = '<span>' + t + '</span><i aria-hidden="true">' + ARROW + '</i>'; });
+  $$('[data-roll]').forEach(a => { const t = a.textContent.trim(); a.innerHTML = roll(t); a.setAttribute('aria-label', t); });
+
+  /* ---------- כותרות: אות אחרי אות ---------- */
+  $$('.split').forEach(el => {
+    const text = el.textContent; el.textContent = ''; el.setAttribute('aria-label', text);
+    let i = 0;
+    text.split(/(\s+)/).forEach(part => {
+      if (/^\s+$/.test(part)) { el.append(' '); return; }
+      const w = document.createElement('span'); w.style.display = 'inline-block'; w.setAttribute('aria-hidden', 'true');
+      [...part].forEach(c => { const s = document.createElement('span'); s.className = 'ch'; s.style.setProperty('--i', i++); s.textContent = c; w.append(s); });
+      el.append(w);
+    });
+  });
+  /* ---------- טקסט שנכתב בגלילה: מילה אחרי מילה ---------- */
+  const scrubs = $$('.scrub').map(el => {
+    el.innerHTML = el.textContent.trim().split(/\s+/).map(w => '<span class="sw">' + w + '</span>').join(' ');
+    return { el, words: $$('.sw', el) };
+  });
+  /* ---------- ציטוטים: שורה אחרי שורה ---------- */
+  function splitLines(el) {
+    const text = el.dataset.text || el.textContent.trim(); el.dataset.text = text;
+    el.innerHTML = text.split(/\s+/).map(w => '<span class="w0">' + w + '</span>').join(' ');
+    const lines = []; let top = null;
+    $$('.w0', el).forEach(w => { if (w.offsetTop !== top) { lines.push([]); top = w.offsetTop; } lines[lines.length - 1].push(w.textContent); });
+    el.innerHTML = lines.map((l, i) => '<span class="ln"><span style="--i:' + i + '">' + l.join(' ') + '</span></span>').join('');
+  }
+  const lineEls = [...$$('.lines'), ...$$('.quote blockquote')];
+  const doLines = () => lineEls.forEach(splitLines);
+  document.fonts.ready.then(doLines);
+
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -12% 0px' });
+  $$('.split, .lines, .fade, .proj, .stat').forEach(el => io.observe(el));
+
+  /* ---------- מונים ---------- */
+  const cio = new IntersectionObserver(es => es.forEach(e => {
+    if (!e.isIntersecting) return; cio.unobserve(e.target);
+    const el = e.target, to = +el.dataset.count, t0 = performance.now();
+    const tick = t => { const k = clamp((t - t0) / 2000); el.textContent = Math.round(to * ease(k)); if (k < 1) requestAnimationFrame(tick); };
+    if (!reduce) { el.textContent = 0; requestAnimationFrame(tick); }
+  }), { threshold: .6 });
+  $$('[data-count]').forEach(el => cio.observe(el));
+
+  /* =========================================================
+     HERO
+     ========================================================= */
+  const film = $('.film'), canvas = $('#canvas'), ctx = canvas.getContext('2d');
+  const nL = +film.dataset.l, nK = +film.dataset.k, nB = +film.dataset.b, N = nL + nK + nB;
+  const frames = new Array(N);
+  const src = i => 'frames/f' + String(i).padStart(4, '0') + '.webp';
+  let cur = 0, target = 0, drawn = -1, loaded = 0;
+  function size() {
+    const dpr = Math.min(devicePixelRatio || 1, 2);
+    canvas.width = Math.round(canvas.clientWidth * dpr);
+    canvas.height = Math.round(canvas.clientHeight * dpr);
+    ctx.imageSmoothingQuality = 'high';
+    drawn = -1;
+  }
+  function nearest(i) {
+    for (let d = 0; d < N; d++) {
+      const a = frames[i - d], b = frames[i + d];
+      if (a && a.complete && a.naturalWidth) return a;
+      if (b && b.complete && b.naturalWidth) return b;
+    }
+  }
+  function draw(i) {
+    const img = nearest(i); if (!img) return;
+    const cw = canvas.width, ch = canvas.height, s = Math.max(cw / img.naturalWidth, ch / img.naturalHeight);
+    const w = img.naturalWidth * s, h = img.naturalHeight * s;
+    ctx.drawImage(img, (cw - w) / 2, (ch - h) / 2, w, h);
+    drawn = i;
+  }
+  const loader = $('#loader'), lpct = $('#loader-pct');
+  const NEED = Math.min(N, 40);
+  let opened = false;
+  const open = () => { if (opened) return; opened = true; loader.classList.add('done'); };
+  if (N && !reduce) {
+    size();
+    const order = [], seen = new Set();
+    for (let step = 16; step >= 1; step /= 2) for (let i = 0; i < N; i += step) if (!seen.has(i)) { seen.add(i); order.push(i); }
+    if (!seen.has(N - 1)) order.push(N - 1);
+    let k = 0;
+    const next = () => {
+      if (k >= order.length) return;
+      const i = order[k++], im = new Image();
+      im.decoding = 'async';
+      im.onload = im.onerror = () => {
+        loaded++; drawn = -1;
+        lpct.textContent = String(Math.round(clamp(loaded / NEED) * 100)).padStart(2, '0');
+        if (loaded >= NEED) setTimeout(open, 300);
+        next();
+      };
+      im.src = src(i); frames[i] = im;
+    };
+    for (let c = 0; c < 6; c++) next();
+    setTimeout(open, 8000);
+    addEventListener('resize', size);
+  } else open();
+
+  /* ---------- גלילה חלקה ---------- */
+  let lenis = null;
+  if (!reduce && window.Lenis) {
+    lenis = window.lenis = new Lenis({ duration: 1.3, easing: t => 1 - Math.pow(1 - t, 4), smoothWheel: true });
+    $$('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
+      const id = a.getAttribute('href'); if (id.length < 2) return;
+      const el = $(id); if (!el) return; e.preventDefault(); lenis.scrollTo(el, { duration: 1.6 });
+    }));
+  }
+
+  const intro = $('#intro'), rooms = $$('.room'), rail = $('#rail'), railLis = $$('#rail li'), railFill = $('#rail-fill');
+  const finale = $('#finale'), dim = $('#dim'), low = $('#low'), nav = $('#nav');
+  const HOLD_IN = .025, HOLD_OUT = .12;
+  const phases = [[0, nL], [nL, nL + nK], [nL + nK, N]];
+  const roomRange = [[6, nL - 4], [nL + 20, nL + nK - 4], [nL + nK + 30, N - 4]];
+
+  /* ---------- 01 ---------- */
+  const st = $('[data-statement]');
+  $$(':scope > span', st).forEach(line => {
+    [...line.childNodes].forEach(n => {
+      if (n.nodeType !== 3) return;
+      const frag = document.createDocumentFragment();
+      n.textContent.split(/(\s+)/).forEach(part => {
+        if (!part) return;
+        if (/^\s+$/.test(part)) frag.append(part);
+        else { const s = document.createElement('span'); s.className = 'w'; s.textContent = part; frag.append(s); }
+      });
+      n.replaceWith(frag);
+    });
+  });
+  const words = $$('.w', st), pills = $$('[data-pill]', st);
+  const expand = $('#expand'), eFrame = $('#expand-frame'), eImg = $('#expand-img'), eCap = $('#expand-cap');
+
+  /* ---------- 02 ---------- */
+  const about = $('#about'), arch = $('#arch'), ring = $('#ring'), portrait = $('#portrait'), aname = $('#aname'), atag = $('#atag'), track = $('#track');
+  let tx = 0, lastY = scrollY, vel = 0;
+
+  /* ---------- 03 ---------- */
+  const work = $('#work'), pars = $$('[data-speed]'), lifts = $$('[data-lift]'), band = $('#band');
+  let bx = 0;
+
+  /* ---------- 04: גלילה אופקית ---------- */
+  const ppin = $('#ppin'), ptrack = $('#ptrack'), pslides = $$('.pslide[data-step]'), pdots = $$('#pdots b');
+  const sizeProcess = () => {
+    if (mobile()) { ppin.style.height = ''; return; }
+    const dist = ptrack.scrollWidth - innerWidth;
+    ppin.style.height = (innerHeight + dist) + 'px';
+    ppin.dataset.dist = dist;
+  };
+  sizeProcess();
+
+  const fword = $('#fword');
+  const sections = $$('[data-nav]');
+  let navY = 0;
+
+  function onScroll() {
+    const H = vh(), W = innerWidth, y = scrollY;
+    /* --- סרט --- */
+    const r = film.getBoundingClientRect();
+    const p = clamp(-r.top / (r.height - H));
+    const fp = clamp((p - HOLD_IN) / (1 - HOLD_IN - HOLD_OUT));
+    if (N && !reduce) {
+      target = fp * (N - 1);
+      const f = target;
+      const i0 = clamp(1 - p / HOLD_IN);
+      intro.style.opacity = i0; intro.style.transform = 'translateY(' + (1 - i0) * 16 + 'px)';
+      roomRange.forEach(([a, b], k) => {
+        const v = clamp(Math.min((f - a) / 8, (b - f) / 8));
+        rooms[k].style.opacity = v; rooms[k].style.transform = 'translateY(' + (1 - v) * 16 + 'px)';
+      });
+      const inR = clamp(Math.min((f - 4) / 8, (N - 2 - f) / 8));
+      rail.style.opacity = inR * (1 - clamp((p - (1 - HOLD_OUT)) / .02));
+      low.style.opacity = Math.max(+rail.style.opacity, i0);
+      let act = 0; phases.forEach(([a], k) => { if (f >= a) act = k; });
+      railLis.forEach((li, k) => li.classList.toggle('on', k === act));
+      railFill.style.transform = 'scaleY(' + fp + ')';
+      const e = clamp((p - (1 - HOLD_OUT + .01)) / .05);
+      finale.style.opacity = e; finale.style.transform = 'translateY(' + (1 - e) * 24 + 'px)';
+      finale.style.pointerEvents = e > .6 ? 'auto' : 'none';
+      dim.style.opacity = e;
+      canvas.style.transform = 'scale(' + (1 + clamp((p - (1 - HOLD_OUT)) / HOLD_OUT) * .05) + ')';
+    }
+
+    /* --- ניווט --- */
+    let theme = 'dark';
+    for (const s of sections) { const b = s.getBoundingClientRect(); if (b.top <= 48 && b.bottom > 48) theme = s.dataset.nav; }
+    nav.classList.toggle('ink', theme === 'light');
+    const inFilm = r.bottom > 0;
+    if (y > navY + 4 && y > H && !inFilm) nav.classList.add('hide');
+    if (y < navY - 4 || inFilm) nav.classList.remove('hide');
+    navY = y;
+
+    vel = vel * .9 + (y - lastY) * .1; lastY = y;
+    if (reduce) return;
+
+    /* --- טקסטים שנכתבים בגלילה --- */
+    scrubs.forEach(({ el, words: ws }) => {
+      const b = el.getBoundingClientRect();
+      if (b.bottom < -100 || b.top > H + 100) return;
+      const v = clamp((H * .92 - b.top) / (H * .55));
+      const n = Math.round(v * ws.length);
+      ws.forEach((w, i) => w.classList.toggle('on', i < n));
+    });
+
+    /* --- 01: המשפט, התמונות בתוך השורה והמסגרת שגדלה --- */
+    const sp = prog(st, .95, .3);
+    const n = Math.round(sp * words.length);
+    words.forEach((w, i) => w.classList.toggle('lit', i < n));
+    pills.forEach((pl, i) => {
+      const v = ease(clamp(sp * 1.6 - .25 - i * .22));
+      pl.style.width = (v * 1.8).toFixed(3) + 'em';
+      pl.firstElementChild.style.transform = 'scale(' + (1.4 - .4 * v) + ')';
+    });
+    const er = expand.getBoundingClientRect();
+    const ep = clamp(-er.top / (er.height - H));
+    const ev = ease(clamp(ep / .75));
+    const ix = 30 * (1 - ev), iy = 22 * (1 - ev);
+    eFrame.style.clipPath = 'inset(' + iy + '% ' + ix + '% ' + iy + '% ' + ix + '% round ' + (4 * (1 - ev)) + 'px)';
+    eImg.style.transform = 'scale(' + (1.3 - .3 * ev) + ')';
+    eCap.style.opacity = clamp((ep - .7) / .2);
+
+    /* --- 02: הקשת גדלה מנקודה, אחריה הטבעת, הדמות, השם והתווית --- */
+    const ab = about.getBoundingClientRect();
+    const ap = clamp((H * .95 - ab.top) / (H * 1.05));
+    /* עיגול קטן מאחורי הגב, שנפתח לקשת המלאה */
+    const aw = arch.offsetWidth, ah = arch.offsetHeight;
+    const pr = portrait.getBoundingClientRect(), arT = arch.getBoundingClientRect().top;
+    const cyc = clamp(pr.top + pr.height * .27 - arT, aw * .26, ah * .5);  // מרכז העיגול: בגובה הכתפיים
+    const cys = arT + cyc;                                               // איפה הכתפיים על המסך
+    const pop = ease(clamp((H * .92 - cys) / (H * .2)));                 // העיגול מופיע מאחורי הגב
+    const grow = ease(clamp((H * .68 - cys) / (H * .32)));               // והופך לקשת
+    const d = aw * .5 * pop;
+    const top = (cyc - d / 2) * (1 - grow), bot = (ah - cyc - d / 2) * (1 - grow), side = ((aw - d) / 2) * (1 - grow);
+    const rTop = d / 2 + (aw / 2 - d / 2) * grow, rBot = d / 2 * (1 - grow);
+    arch.style.clipPath = 'inset(' + top + 'px ' + side + 'px ' + bot + 'px ' + side + 'px round ' + rTop + 'px ' + rTop + 'px ' + rBot + 'px ' + rBot + 'px)';
+    const rv = ease(clamp((H * .44 - cys) / (H * .16)));
+    ring.style.opacity = rv; ring.style.transform = 'scale(' + (.6 + .4 * rv) + ')';
+    const pv = ease(clamp((ap - .04) / .34));
+    portrait.style.opacity = pv; portrait.style.transform = 'translateY(' + (1 - pv) * 14 + '%)';
+    aname.style.opacity = clamp((ap - .45) / .3);
+    const tv = ease(clamp((ap - .62) / .3));
+    atag.style.opacity = tv; atag.style.transform = 'translateX(' + (1 - tv) * -32 + 'px)';
+
+    /* --- 03: הרקע הכהה "עולה" ומתרחב, פרלקס בגלריה --- */
+    if (!mobile()) {
+      const wr = work.getBoundingClientRect();
+      work.style.setProperty('--rise', (6 * (1 - ease(clamp((H - wr.top) / (H * .9))))).toFixed(2) + '%');
+    }
+    pars.forEach(img => {
+      const b = img.parentElement.getBoundingClientRect();
+      if (b.bottom < -200 || b.top > H + 200) return;
+      img.style.translate = '0 ' + ((b.top + b.height / 2 - H / 2) * -+img.dataset.speed).toFixed(1) + 'px';
+    });
+    lifts.forEach(el => {
+      const b = el.getBoundingClientRect();
+      if (b.bottom < -400 || b.top > H + 400) return;
+      el.style.transform = 'translate3d(0,' + ((b.top + b.height / 2 - H / 2) * -+el.dataset.lift).toFixed(1) + 'px,0)';
+    });
+
+    /* --- 04: מסלול אופקי שזז ימינה, מילה ענקית שחוצה את התמונה --- */
+    if (!mobile()) {
+      const pr = ppin.getBoundingClientRect(), dist = +ppin.dataset.dist || 0;
+      const pp = clamp(-pr.top / (pr.height - H));
+      ptrack.style.transform = 'translate3d(' + (pp * dist) + 'px,0,0)';
+      let act = -1;
+      pslides.forEach((s, i) => {
+        const b = s.getBoundingClientRect();
+        const d = (b.left + b.width / 2 - W / 2) / W;          // -1..1 מהמרכז
+        if (Math.abs(d) > 1.4) return;
+        $('.pslide__word', s).style.transform = 'translate3d(' + (d * 34).toFixed(2) + 'vw,0,0)';
+        $('.pslide__sm', s).style.transform = 'translate3d(' + (d * -16).toFixed(2) + 'vw,' + (d * 6).toFixed(2) + 'vh,0)';
+        const im = $('.pslide__img', s);
+        im.style.transform = 'scale(' + (1 - Math.min(Math.abs(d), 1) * .12).toFixed(3) + ')';
+        im.firstElementChild.style.transform = 'scale(1.15) translateX(' + (d * -6).toFixed(2) + '%)';
+        $('.pslide__txt', s).style.opacity = clamp(1 - Math.abs(d) * 2.2);
+        if (Math.abs(d) < .5) act = i;
+      });
+      pdots.forEach((b, i) => b.classList.toggle('on', i === act));
+    }
+
+    /* --- פוטר --- */
+    const fr = fword.getBoundingClientRect();
+    if (fr.top < H) fword.style.backgroundPosition = '50% ' + (30 + clamp((H - fr.top) / (H + fr.height)) * 40) + '%';
+  }
+
+  function loop(t) {
+    if (lenis) lenis.raf(t);
+    if (N && !reduce) {
+      cur += (target - cur) * .14;
+      if (Math.abs(target - cur) < .02) cur = target;
+      const i = Math.round(cur);
+      if (i !== drawn) draw(i);
+    }
+    if (!reduce) {
+      const w = track.scrollWidth / 4;
+      tx += .5 + Math.abs(vel) * .3;
+      if (tx > w) tx -= w;
+      track.style.transform = 'translate3d(' + (tx - w) + 'px,0,0)';
+      const bw = band.scrollWidth / 2;
+      bx += 1 + Math.abs(vel) * .5;   // רץ תמיד, ומאיץ בגלילה
+      if (bx > bw) bx -= bw;
+      band.style.transform = 'translate3d(' + bx + 'px,0,0)';     // השורה מעוגנת לימין, לכן זזה ימינה מ-0 עד חצי רוחבה
+    }
+    requestAnimationFrame(loop);
+  }
+  if (lenis) lenis.on('scroll', onScroll); else addEventListener('scroll', onScroll, { passive: true });
+  addEventListener('resize', () => { doLines(); sizeProcess(); onScroll(); });
+  document.fonts.ready.then(() => setTimeout(() => { sizeProcess(); onScroll(); }, 80));
+  onScroll();
+  requestAnimationFrame(loop);
+
+  /* ---------- סמן וכפתורים מגנטיים ---------- */
+  const cursor = $('#cursor');
+  if (!reduce && matchMedia('(hover:hover)').matches) {
+    let cx = innerWidth / 2, cy = innerHeight / 2, tx2 = cx, ty2 = cy;
+    addEventListener('mousemove', e => { tx2 = e.clientX; ty2 = e.clientY; cursor.classList.add('live'); });
+    (function cl() { cx += (tx2 - cx) * .18; cy += (ty2 - cy) * .18; cursor.style.transform = 'translate3d(' + cx + 'px,' + cy + 'px,0)'; requestAnimationFrame(cl); })();
+    $$('.proj').forEach(p => { p.addEventListener('mouseenter', () => cursor.classList.add('big')); p.addEventListener('mouseleave', () => cursor.classList.remove('big')); });
+  }
+
+  /* ---------- המלצות ---------- */
+  const quotes = $$('.quote'), qbtn = $$('#qnav button'), vbg = $$('#vbg img');
+  let qi = 0, qt = 0, qLast = performance.now(), qVis = false; const QD = 8000;
+  const setQ = i => {
+    qi = i; qt = 0;
+    quotes.forEach((q, k) => q.classList.toggle('on', k === i));
+    vbg.forEach((im, k) => im.classList.toggle('on', k === i));
+    qbtn.forEach((b, k) => b.setAttribute('aria-selected', k === i));
+  };
+  qbtn.forEach((b, k) => b.addEventListener('click', () => setQ(k)));
+  new IntersectionObserver(es => qVis = es[0].isIntersecting, { threshold: .4 }).observe($('#voices'));
+  (function ql(t) {
+    const dt = t - qLast; qLast = t;
+    if (qVis && !reduce) { qt += dt; if (qt >= QD) setQ((qi + 1) % quotes.length); }
+    requestAnimationFrame(ql);
+  })(performance.now());
+
+  /* ---------- טופס (קונספט) ---------- */
+  $('#form').addEventListener('submit', e => {
+    e.preventDefault();
+    const f = e.target, ok = $('#ok');
+    if (!f.name.value.trim() || f.phone.value.replace(/\D/g, '').length < 9) { ok.textContent = 'נשמח לשם ולמספר טלפון תקין, כדי שנוכל לחזור אליכם.'; return; }
+    ok.textContent = 'תודה, ' + f.name.value.trim().split(' ')[0] + '. נועה תחזור אליכם תוך יום עסקים אחד.';
+    f.reset();
+  });
+})();
+</script>
+</body>
+</html>
